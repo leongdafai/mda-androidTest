@@ -3,4 +3,6 @@ target/
 *.iml
 .gradle/
 .allure/
+allure-results/
 captcha_debug.png
+*.apk
