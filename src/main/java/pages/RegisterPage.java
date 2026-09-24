@@ -85,12 +85,18 @@ public class RegisterPage extends BasePage {
         return this;
     }
 
+    public RegisterPage tapSMSInput(){
+        click(CAPTCHA_INPUT);
+        new Actions(driver).sendKeys("1234").perform();
+        click(SEND_CODE_BUTTON);
+        return this;
+    }
+
+
     /**
      * 处理验证码弹窗：
      * 截图 → OCR识别 → 计算答案 → 填入 → 点确认
      */
-
-
     public RegisterPage handleCaptcha() throws Exception {
         // 1. 截图验证码图片（只截那个元素的区域）
         byte[] imageBytes = ((TakesScreenshot) find(CAPTCHA_IMAGE))

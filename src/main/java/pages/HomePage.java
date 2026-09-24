@@ -8,6 +8,9 @@ import org.openqa.selenium.By;
 public class HomePage extends BasePage {
     private static final By SEARCH_ICON = AppiumBy.accessibilityId("Search");
     private static final By ME_ICON = AppiumBy.androidUIAutomator("new UiSelector().text(\"Me\")");
+    private static final By MOBILE_ICON = AppiumBy.androidUIAutomator("new UiSelector().text(\"手机\")");
+
+
 
     public HomePage(AppiumDriver driver){super(driver);}
 
@@ -19,6 +22,8 @@ public class HomePage extends BasePage {
         click(ME_ICON);
         return new ProfilePage(driver);
     }
+
+    public ResultPage goToFirstTab(){click(MOBILE_ICON);return new ResultPage(driver);}
 
 
 

@@ -6,3 +6,4 @@ target/
 allure-results/
 captcha_debug.png
 *.apk
+SMSfalseTest.java
