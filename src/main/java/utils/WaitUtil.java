@@ -29,4 +29,22 @@ public class WaitUtil {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
         // visibilityOfElementLocated：等元素出现在页面上且可见
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }}
+    }
+
+    /**
+     * 等元素可点击
+     */
+    public static WebElement waitForClickable(AppiumDriver driver, By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT));
+        return wait.until(ExpectedConditions.elementToBeClickable (locator));
+    }
+
+    /**
+     * 等元素消失（不可见或不存在）
+     */
+    public static boolean waitForInvisible(AppiumDriver driver, By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT));
+        return wait.until(ExpectedConditions.invisibilityOfElementLocated  (locator));
+    }
+
+}

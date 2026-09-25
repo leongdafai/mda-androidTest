@@ -7,6 +7,7 @@ import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.interactions.Actions;
 import utils.SwipeUtil;
+import utils.WaitUtil;
 
 public class ResultPage extends BasePage {
     private static final By VIEW_BUTTON=AppiumBy.androidUIAutomator("new UiSelector().className(\"android.view.View\").instance(13)");
@@ -28,12 +29,12 @@ public class ResultPage extends BasePage {
 
 
     public ResultPage searchProduct(String productName){
-
+        WaitUtil.waitForClickable(driver,SEARCH_INPUT);
         click(SEARCH_INPUT); //激活对话框
         Actions action = new Actions(driver);
         action.sendKeys(productName).perform();//actions类模拟键盘输入
         click(SEARCH_BUTTON_TEXT);
-        return this;
+        return new ResultPage(driver);
     }
 
     public ProductDetailPage tapFirstProduct(){
