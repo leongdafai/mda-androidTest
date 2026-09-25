@@ -14,7 +14,9 @@ public class ResultPage extends BasePage {
     private static final By SEARCH_BUTTON_TEXT = AppiumBy.androidUIAutomator("new UiSelector().text(\"Search\")");
     private static final By FLITER_ICON=AppiumBy.androidUIAutomator("new UiSelector().text(\"Filter\")");
     private static final By FIRST_PRODUCT_POSITION=AppiumBy.androidUIAutomator("new UiSelector().className(\"android.view.View\").instance(8)");
-
+    private static final By FIRST_PRODUCT = AppiumBy.androidUIAutomator("new UiSelector().className(\"android.view.View\").instance(10)");   // 第一个商品卡片
+    private static final By NO_RESULT_TIP = AppiumBy.androidUIAutomator(
+            "new UiSelector().text(\"No content available\")");
 
     public ResultPage(AppiumDriver driver){super(driver);}
 
@@ -23,6 +25,7 @@ public class ResultPage extends BasePage {
         click(FLITER_ICON);
         return new FilterPage(driver);
     }
+
 
     public ResultPage searchProduct(String productName){
 
@@ -39,5 +42,11 @@ public class ResultPage extends BasePage {
     }
 
     public boolean isLoaded(){return isDisplayed(VIEW_BUTTON);}
+    public boolean hasAnyProduct() {
+        return isDisplayed(FIRST_PRODUCT);
+    }
 
+    public boolean isNoResultTipDisplayed() {
+        return isDisplayed(NO_RESULT_TIP);
+    }
 }

@@ -9,6 +9,8 @@ import org.testng.annotations.*;
 import utils.ScreenshotUtil;
 
 import java.io.ByteArrayInputStream;
+import java.util.Map;
+
 @Listeners({AllureTestNg.class})
 public class BaseTest {
     protected AppiumDriver driver;
@@ -16,7 +18,24 @@ public class BaseTest {
     @Parameters("platform")
     public void setUp(@Optional("android") String platform) {
         driver = DriverFactory.initDriver(platform);
+}
+
+    @BeforeMethod
+    public void resetApp() {
+        // 不重建 Driver，只重启 App 到首页
+        try {
+            Runtime.getRuntime().exec(new String[]{
+                    "adb", "shell", "am", "force-stop", "com.joker.coolmall"
+            }).waitFor();
+            Thread.sleep(2000);
+            driver.executeScript("mobile: activateApp",
+                    java.util.Map.of("appId", "com.joker.coolmall"));
+            Thread.sleep(3000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
     @AfterMethod(alwaysRun = true)
     public void captureOnFailure(ITestResult result) {
         if (result.getStatus() == ITestResult.FAILURE) {

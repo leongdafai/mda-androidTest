@@ -9,8 +9,8 @@ import org.openqa.selenium.interactions.Actions;
 import javax.xml.transform.Result;
 
 public class SearchPage extends BasePage {
-    private static final By SEARCH_BUTTON_TEXT = AppiumBy.androidUIAutomator("new UiSelector().text(\"Search\")");
-    private static final By SEARCH_INPUT =AppiumBy.androidUIAutomator("new UiSelector().className(\"android.view.View\").instance(35)");
+    private static final By SEARCH_BUTTON = AppiumBy.androidUIAutomator("new UiSelector().text(\"Search\")");
+    private static final By SEARCH_INPUT =AppiumBy.androidUIAutomator("new UiSelector().text(\"Search products...\")");
 
 
     public SearchPage(AppiumDriver driver){super(driver);}
@@ -21,13 +21,13 @@ public class SearchPage extends BasePage {
         Actions action = new Actions(driver);
         action.sendKeys(productName).perform();//actions类模拟键盘输入
 
-        click(SEARCH_BUTTON_TEXT);
+        click(SEARCH_BUTTON);
         return new ResultPage(driver);
     }
 
 
     public boolean isLoaded(){
-        return isDisplayed(SEARCH_BUTTON_TEXT);
+        return isDisplayed(SEARCH_BUTTON);
     }
 
 

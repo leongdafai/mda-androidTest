@@ -125,6 +125,12 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- POI -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.3.0</version>
+        </dependency>
         <!-- Allure TestNG 集成：让测试结果生成 Allure 报告 -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
