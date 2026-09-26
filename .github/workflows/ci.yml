@@ -1,0 +1,33 @@
+name: Java CI
+
+# 触发条件：什么时候跑
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    # 在哪个操作系统上跑
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1：把仓库代码拉下来
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2：装 JDK 11
+      - name: Set up JDK 11
+        uses: actions/setup-java@v4
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+
+      # Step 3：编译 main 代码
+      - name: Compile main code
+        run: mvn compile
+
+      # Step 4：编译 test 代码（不执行测试）
+      - name: Compile test code
+        run: mvn test-compile
