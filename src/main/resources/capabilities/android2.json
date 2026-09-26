@@ -1,0 +1,12 @@
+{
+  "platformName": "Android",
+  "appium:automationName": "UiAutomator2",
+  "appium:deviceName": "emulator-5556",
+  "appium:platformVersion": "17",
+  "appium:app": "E:/mdaandroidTest/src/apps/qingmall_1.1.2.apk",
+  "appium:appPackage": "com.joker.coolmall",
+  "appium:appActivity": "com.joker.coolmall.MainActivity",
+  "appium:noReset": true,
+  "appium:newCommandTimeout": 300,
+  "appium:systemPort": 8222
+}

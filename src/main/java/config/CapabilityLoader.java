@@ -4,26 +4,21 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.ios.options.XCUITestOptions;
-import io.qameta.allure.Allure;
 import org.openqa.selenium.Capabilities;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 
-/**
- * Capability 配置加载器
- * 作用：读取 JSON 配置文件（如 android.json），转换成 Appium Driver 能用的 Capabilities 对象
- */
+///**
+// * Capability 配置加载器
+// */
 public class CapabilityLoader {
     private static final ObjectMapper MAPPER = new ObjectMapper();
 
     /**
      * 加载 Capability 配置文件，返回对应平台的 Options 对象
      *
-     * @param filePath 配置文件路径，如 "capabilities/android.json"
      * @param platform 平台，传 "android" 或 "ios"
      * @return Capabilities 对象（实际上是 UiAutomator2Options 或 XCUITestOptions）
      */
@@ -55,7 +50,7 @@ public class CapabilityLoader {
     }
 
     public static void main(String[] args) {
-        CapabilityLoader.load("capabilities/android.json","android");
+        CapabilityLoader.load("capabilities/android1.json","android");
     }
 
 }
