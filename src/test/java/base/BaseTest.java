@@ -6,6 +6,7 @@ import io.qameta.allure.Allure;
 import io.qameta.allure.testng.AllureTestNg;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import utils.PageSourceUtil;
 import utils.ScreenshotUtil;
 
 import java.io.ByteArrayInputStream;
@@ -47,6 +48,9 @@ public class BaseTest {
                     new ByteArrayInputStream(screenshot),
                     "png"
             );
+            String pageSource = PageSourceUtil.getPageSource(driver);
+            Allure.addAttachment("页面源码", "text/xml",
+                    pageSource, "xml");
         }
     }
 

@@ -36,7 +36,7 @@ public class WaitUtil {
      */
     public static WebElement waitForClickable(AppiumDriver driver, By locator) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT));
-        return wait.until(ExpectedConditions.elementToBeClickable (locator));
+        return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     /**
@@ -44,7 +44,7 @@ public class WaitUtil {
      */
     public static boolean waitForInvisible(AppiumDriver driver, By locator) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(DEFAULT_TIMEOUT));
-        return wait.until(ExpectedConditions.invisibilityOfElementLocated  (locator));
+        return wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 
 }
