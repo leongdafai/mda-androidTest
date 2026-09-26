@@ -1,0 +1,1 @@
+使用 GitHub Actions 进行持续集成。每次 push 到 main 分支，会自动触发编译检查（workflow 文件：`.github/workflows/ci.yml`）。
